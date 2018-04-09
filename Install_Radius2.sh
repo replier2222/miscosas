@@ -2,7 +2,7 @@
 
 TMP_FOLDER=$(mktemp -d)
 NAME_COIN="ZALIAS"
-GIT_REPO="https://github.com/radiusdev/radiuscore.git"
+GIT_REPO="https://github.com/RadiusCrypto/Radius.git"
 BINARY_FILE="radiusd"
 BINARY_CLI="/usr/local/bin/radius-cli"
 BINARY_CLI_FILE="radius-cli"
