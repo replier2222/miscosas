@@ -3,9 +3,9 @@
 TMP_FOLDER=$(mktemp -d)
 NAME_COIN="Radius"
 GIT_REPO="https://github.com/RadiusCrypto/Radius.git"
-BINARY_FILE="brvd"
-BINARY_CLI="/usr/local/bin/brv-cli"
-BINARY_CLI_FILE="brv-cli"
+BINARY_FILE="rdsd"
+BINARY_CLI="/usr/local/bin/rds-cli"
+BINARY_CLI_FILE="rds-cli"
 BINARY_PATH="/usr/local/bin/${BINARY_FILE}"
 DIR_COIN=".rds"
 CONFIG_FILE="rds.conf"
