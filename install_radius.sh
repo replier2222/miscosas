@@ -1,15 +1,15 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-NAME_COIN="Radius"
-GIT_REPO="https://github.com/RadiusCrypto/Radius.git"
-BINARY_FILE="brvd"
-BINARY_CLI="/usr/local/bin/brv-cli"
-BINARY_CLI_FILE="brv-cli"
+NAME_COIN="RADIUS"
+GIT_REPO="https://github.com/radiusdev/radiuscore.git"
+BINARY_FILE="radiusd"
+BINARY_CLI="/usr/local/bin/radius-cli"
+BINARY_CLI_FILE="radius-cli"
 BINARY_PATH="/usr/local/bin/${BINARY_FILE}"
-DIR_COIN=".rds"
-CONFIG_FILE="rds.conf"
-DEFULT_PORT=22011
+DIR_COIN=".radiuscore"
+CONFIG_FILE="radius.conf"
+DEFULT_PORT=4090
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -85,21 +85,19 @@ function compile_server() {
 	read -n 1 -s -r -p ""
 
 	git clone $GIT_REPO $TMP_FOLDER
-	cd $TMP_FOLDER/Radius
-
-	chmod 755 * -R
+	cd $TMP_FOLDER
 
 	./autogen.sh
-	./configure
+	./configure --disable-wallet
 	make
 
-	cp -a ./src/$BINARY_FILE $BINARY_PATH
-	cp -a ./src/$BINARY_CLI_FILE $BINARY_CLI
-	clear
+	cp -a $TMP_FOLDER/src/$BINARY_FILE $BINARY_PATH
+	cp -a $TMP_FOLDER/src/$BINARY_CLI_FILE $BINARY_CLI
+  clear
 }
 
 function ask_user() {
-	  DEFAULT_USER="worker"
+	  DEFAULT_USER="worker01"
 	  read -p "${NAME_COIN} user: " -i $DEFAULT_USER -e WORKER
 	  : ${WORKER:=$DEFAULT_USER}
 
@@ -232,7 +230,7 @@ EOF
   fi
 }
 
-function important_information() {
+function resumen() {
  echo
  echo -e "================================================================================================================================"
  echo -e "${NAME_COIN} Masternode is up and running as user ${GREEN}$WORKER${NC} and it is listening on port ${GREEN}$PORT_COIN${NC}."
@@ -253,11 +251,13 @@ function setup_node() {
 	update_config
 	enable_firewall
 	systemd_up
-	important_information
+	resumen
 }
 
+######################################################
+#                      Main Script                   #
+######################################################
 
-##### Main #####
 clear
 
 checks
@@ -272,5 +272,3 @@ else
   echo -e "${GREEN}${NAME_COIN} already running.${NC}"
   exit 0
 fi
-
-
