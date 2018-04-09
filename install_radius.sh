@@ -1,11 +1,18 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
+<<<<<<< HEAD
 NAME_COIN="RADIUS"
 GIT_REPO="https://github.com/radiusdev/radiuscore.git"
 BINARY_FILE="radiusd"
 BINARY_CLI="/usr/local/bin/radius-cli"
 BINARY_CLI_FILE="radius-cli"
+=======
+GIT_REPO="https://github.com/RadiusCrypto/Radius.git"
+BINARY_FILE="rdsd"
+BINARY_CLI="/usr/local/bin/rds-cli"
+BINARY_CLI_FILE="rds-cli"
+>>>>>>> 7bbf417b72f6f5b1ce3066cb26ee89182de3f2bc
 BINARY_PATH="/usr/local/bin/${BINARY_FILE}"
 DIR_COIN=".radiuscore"
 CONFIG_FILE="radius.conf"
