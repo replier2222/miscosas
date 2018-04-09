@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TMP_FOLDER=$(mktemp -d)
-NAME_COIN="ZALIAS"
+NAME_COIN="RADIUS"
 GIT_REPO="https://github.com/RadiusCrypto/Radius.git"
 BINARY_FILE="radiusd"
 BINARY_CLI="/usr/local/bin/radius-cli"
